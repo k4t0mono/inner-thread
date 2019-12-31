@@ -21,10 +21,26 @@ pub struct Deck {
 
 #[derive(Debug, Deserialize, Serialize)]
 pub struct Card {
-    pub id: u32,
-    pub deck: String,
-    pub name: String,
-    pub meanings: Vec<Meaning>,
+    id: u32,
+    deck: String,
+    name: String,
+    meanings: Vec<Meaning>,
+}
+
+impl Card {
+    pub fn get_name(&self) -> &String {
+        &self.name
+    }
+
+    pub fn get_deck(&self) -> &String {
+        &self.deck
+    }
+
+    pub fn get_meaning(&self, index: usize) -> Option<&Meaning> {
+        self.meanings.get(index)
+    }
+
+    
 }
 
 
@@ -33,6 +49,20 @@ pub struct Meaning {
     r#type: Option<String>,
     text: Option<String>,
     keywords: Vec<String>,
+}
+
+impl Meaning {
+    pub fn get_type(&self) -> &Option<String> {
+        &self.r#type
+    }
+
+    pub fn get_text(&self) -> &Option<String> {
+        &self.text
+    }
+
+    pub fn get_keywords(&self) -> &Vec<String> {
+        &self.keywords
+    }
 }
 
 
